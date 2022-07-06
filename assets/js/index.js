@@ -82,7 +82,7 @@ const uploadFile = () => {
 
   files = fileInput.files;
   const formData = new FormData();
-  formData.append("myfile", files[0]);
+  formData.append("file", files[0]);
 
   //show the uploader
   progressContainer.style.display = "block";
