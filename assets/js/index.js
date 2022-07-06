@@ -107,11 +107,8 @@ const uploadFile = () => {
   };
 
   // listen for response which will give the link
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState == XMLHttpRequest.DONE) {
-      onFileUploadSuccess(xhr.responseText);
-    }
-  };
+ 
+      onFileUploadSuccess(xhr.responseText)
 
   xhr.open("POST", uploadURL);
   xhr.send(formData);
