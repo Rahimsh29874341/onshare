@@ -80,7 +80,7 @@ fileURL.addEventListener("click", () => {
 const uploadFile = () => {
   console.log("file added uploading");
 
-  files = fileInput.files;
+  const files = fileInput.files;
   const formData = new FormData();
   formData.append("myfile", files[0]);
 
@@ -105,6 +105,9 @@ const uploadFile = () => {
     showToast(`Error in upload: ${xhr.status}.`);
     fileInput.value = ""; // reset the input
   };
+  
+   xhr.open("POST", uploadURL);
+  xhr.send(formData);
 
   // listen for response which will give the link
   xhr.onreadystatechange = function () {
@@ -114,8 +117,6 @@ const uploadFile = () => {
     }
   };
 
-  xhr.open("POST", uploadURL);
-  xhr.send(formData);
 };
 
 const onFileUploadSuccess = (res) => {
