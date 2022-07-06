@@ -15,11 +15,11 @@ const emailForm = document.querySelector("#emailForm");
 
 const toast = document.querySelector(".toast");
 
-const baseURL = "https://onshare.herokuapp.com";
+const baseURL = "https://innshare.herokuapp.com";
 const uploadURL = `${baseURL}/api/files`;
 const emailURL = `${baseURL}/api/files/send`;
 
-const maxAllowedSize = 500 * 1024 * 1024; //500mb
+const maxAllowedSize = 100 * 1024 * 1024; //100mb
 
 
 browseBtn.addEventListener("click", () => {
@@ -80,7 +80,7 @@ fileURL.addEventListener("click", () => {
 const uploadFile = () => {
   console.log("file added uploading");
 
-  const files = fileInput.files;
+  files = fileInput.files;
   const formData = new FormData();
   formData.append("myfile", files[0]);
 
@@ -105,18 +105,16 @@ const uploadFile = () => {
     showToast(`Error in upload: ${xhr.status}.`);
     fileInput.value = ""; // reset the input
   };
-  
-   xhr.open("POST", uploadURL);
-  xhr.send(formData);
 
   // listen for response which will give the link
   xhr.onreadystatechange = function () {
-    console.log(xhr.readyState)
     if (xhr.readyState == XMLHttpRequest.DONE) {
       onFileUploadSuccess(xhr.responseText);
     }
   };
 
+  xhr.open("POST", uploadURL);
+  xhr.send(formData);
 };
 
 const onFileUploadSuccess = (res) => {
