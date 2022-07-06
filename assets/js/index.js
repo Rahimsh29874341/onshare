@@ -4,7 +4,7 @@ const fileInput = document.querySelector('#fileInput')
 
 const bgProgress = document.querySelector('.bg-progress')
 
-const host = "https://innshare.herokuapp.com/"
+const host = "https://onshare.herokuapp.com/"
 const uploadUrl = `${host}api/files`
 const uploadEmail = `${host}api/files`
 
